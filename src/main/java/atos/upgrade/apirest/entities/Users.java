@@ -1,6 +1,6 @@
 package atos.upgrade.apirest.entities;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,11 +34,11 @@ public class Users implements Serializable {
 
     @PrePersist
     public void prePersist() {
-        this.createdAt = new Date(System.currentTimeMillis());
+        this.createdAt = new Date();
     }
     @PreUpdate
     public void preUpdate() {
-        this.createdAt = new Date(System.currentTimeMillis());
+        this.createdAt = new Date();
     }
 
 
