@@ -17,21 +17,22 @@ import atos.upgrade.apirest.utils.MHelpers;
 @Component
 public class UsersImplement implements UserService {
 
-
     @Autowired
     private UsersDAO usersDAO;
 
     @Override
-    public Page<UsersDTO> findAll(int page, int size) {
-        Page<Users> users = this.usersDAO.findAll();
-        
-        return users.map(this::convertToUsersDTO);
-    }
-
-    @Override
     public List<UsersDTO> findAll() {
-        // TODO Auto-generated method stub
-        return null;
+        List<UsersDTO> dto = new ArrayList<>();
+
+        Iterable<Users> users = this.usersDAO.findAll();
+
+        for (Users user : users) {
+            UsersDTO usersDTO = MHelpers.modelMapper().map(user, UsersDTO.class);
+
+            dto.add(usersDTO);
+        }
+
+        return dto;
     }
 
     @Override
@@ -60,7 +61,7 @@ public class UsersImplement implements UserService {
 
         Users users = MHelpers.modelMapper().map(user, Users.class);
         this.usersDAO.save(users);
-        
+
     }
 
     @Override
@@ -71,15 +72,21 @@ public class UsersImplement implements UserService {
             u.add(us);
         }
         this.usersDAO.saveAll(u);
-        
+
     }
 
     @Override
     public void deleteById(int userId) {
-        this.usersDAO.deleteById(userId);        
+        this.usersDAO.deleteById(userId);
     }
-    
-    private UsersDTO convertToUsersDTO(final Users users){
+
+    private UsersDTO convertToUsersDTO(final Users users) {
         return MHelpers.modelMapper().map(users, UsersDTO.class);
+    }
+
+    @Override
+    public Page<UsersDTO> findAll(int page, int size) {
+        // TODO Auto-generated method stub
+        return null;
     }
 }
