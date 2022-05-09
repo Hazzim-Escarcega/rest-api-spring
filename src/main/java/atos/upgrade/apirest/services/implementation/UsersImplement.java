@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
+import atos.upgrade.apirest.dto.UserRequest;
 import atos.upgrade.apirest.dto.UsersDTO;
 import atos.upgrade.apirest.entities.Users;
 import atos.upgrade.apirest.repository.UsersDAO;
@@ -57,7 +58,7 @@ public class UsersImplement implements UserService {
     }
 
     @Override
-    public void save(UsersDTO user) {
+    public void save(UserRequest user) {
 
         Users users = MHelpers.modelMapper().map(user, Users.class);
         this.usersDAO.save(users);

@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import atos.upgrade.apirest.dto.UserRequest;
 import atos.upgrade.apirest.dto.UsersDTO;
 
 @Service
@@ -17,7 +18,7 @@ public interface UserService {
 
     UsersDTO findById(int id);
 
-    void save(UsersDTO user);
+    void save(UserRequest user);
 
     void saveAll(List<UsersDTO> users);
 
