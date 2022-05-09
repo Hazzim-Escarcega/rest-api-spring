@@ -28,7 +28,7 @@ public class ApiController {
     }
 
     @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> SaveUser(@RequestBody UserRequest request) {
+    public ResponseEntity<Object> saveUser(@RequestBody UserRequest request) {
         userService.save(request);
         return ResponseEntity.ok(Boolean.TRUE);
 

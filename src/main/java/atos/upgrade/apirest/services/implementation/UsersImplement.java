@@ -13,6 +13,7 @@ import atos.upgrade.apirest.dto.UsersDTO;
 import atos.upgrade.apirest.entities.Users;
 import atos.upgrade.apirest.repository.UsersDAO;
 import atos.upgrade.apirest.services.interfaces.UserService;
+import atos.upgrade.apirest.utils.BCrypt;
 import atos.upgrade.apirest.utils.MHelpers;
 
 @Component
@@ -61,6 +62,7 @@ public class UsersImplement implements UserService {
     public void save(UserRequest user) {
 
         Users users = MHelpers.modelMapper().map(user, Users.class);
+        users.setPassword(BCrypt.hashpw(users.getPassword(), BCrypt.gensalt()));
         this.usersDAO.save(users);
 
     }
