@@ -1,4 +1,4 @@
-package atos.upgrade.apirest.utils;
+package atos.upgrade.apirest.utils.hash;
 
 // Copyright (c) 2006 Damien Miller <djm@mindrot.org>
 //

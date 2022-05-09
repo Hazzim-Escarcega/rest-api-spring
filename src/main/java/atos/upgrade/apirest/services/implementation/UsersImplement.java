@@ -13,8 +13,8 @@ import atos.upgrade.apirest.dto.UsersDTO;
 import atos.upgrade.apirest.entities.Users;
 import atos.upgrade.apirest.repository.UsersDAO;
 import atos.upgrade.apirest.services.interfaces.UserService;
-import atos.upgrade.apirest.utils.BCrypt;
-import atos.upgrade.apirest.utils.MHelpers;
+import atos.upgrade.apirest.utils.hash.BCrypt;
+import atos.upgrade.apirest.utils.helpers.MHelpers;
 
 @Component
 public class UsersImplement implements UserService {
